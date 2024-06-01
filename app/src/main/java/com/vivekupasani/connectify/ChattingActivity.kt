@@ -23,11 +23,12 @@ class ChattingActivity : AppCompatActivity() {
     lateinit var msgBox: TextInputEditText
     lateinit var send: ImageView
     lateinit var messageList: ArrayList<Messages>
-    lateinit var contactView : RecyclerView
+    lateinit var contactView: RecyclerView
     lateinit var contactAdapter: ChatAdapter
     var senderRoom: String? = null
     var receiverRoom: String? = null
-//github
+
+    //github
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -50,27 +51,35 @@ class ChattingActivity : AppCompatActivity() {
         messageList = ArrayList()
 
         contactView = findViewById(R.id.caRecyclerView)
-        contactView.layoutManager = LinearLayoutManager(this)
-        contactView.setHasFixedSize(false)
+
         contactAdapter = ChatAdapter(this, messageList)
-        contactView.adapter = contactAdapter
 
-        firebase.child("Chats").child(senderRoom!!).child("messages").addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                messageList.clear()
-                if (snapshot.exists()) {
-                    for (eachSnap in snapshot.children) {
-                        val dataSnap = eachSnap.getValue(Messages::class.java)
-                        messageList.add(dataSnap!!)
+        contactView.apply {
+            layoutManager = LinearLayoutManager(this@ChattingActivity).apply {
+                // For the messages to appear from bottom like Whatsapp
+                stackFromEnd = true
+            }
+            setHasFixedSize(true)
+            adapter = contactAdapter
+        }
+
+        firebase.child("Chats").child(senderRoom!!).child("messages")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    messageList.clear()
+                    if (snapshot.exists()) {
+                        for (eachSnap in snapshot.children) {
+                            val dataSnap = eachSnap.getValue(Messages::class.java)
+                            messageList.add(dataSnap!!)
+                        }
+                        contactAdapter.notifyDataSetChanged()
                     }
-                    contactAdapter.notifyDataSetChanged()
                 }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                // Handle possible errors.
-            }
-        })
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle possible errors.
+                }
+            })
 
         send.setOnClickListener {
             val msgB = msgBox.text.toString()
@@ -99,12 +108,14 @@ class ChattingActivity : AppCompatActivity() {
                 finish()
                 true
             }
+
             R.id.menuLogout -> {
                 auth.signOut()
                 val intent = Intent(this, signupActivity::class.java)
                 startActivity(intent)
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

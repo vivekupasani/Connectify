@@ -8,6 +8,7 @@
     android:background="@drawable/main_background"
     android:orientation="vertical"
     android:layout_marginTop="25dp"
+    android:fitsSystemWindows="true"
     tools:context=".ChattingActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -44,8 +45,7 @@
             android:layout_width="60dp"
             android:layout_margin="2dp"
             android:layout_height="60dp"
-           android:src="@drawable/send"
-
+            android:src="@drawable/send"
             android:background="@drawable/send_button_gradient"/>
     </LinearLayout>
 
