@@ -27,7 +27,7 @@ class ChattingActivity : AppCompatActivity() {
     lateinit var contactAdapter: ChatAdapter
     var senderRoom: String? = null
     var receiverRoom: String? = null
-
+//github
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
