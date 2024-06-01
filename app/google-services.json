@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "63290846189",
+    "firebase_url": "https://connectify-970df-default-rtdb.firebaseio.com",
+    "project_id": "connectify-970df",
+    "storage_bucket": "connectify-970df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63290846189:android:11a2b6f47b4dcd038815e4",
+        "android_client_info": {
+          "package_name": "com.vivekupasani.connectify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsC6z3kOomiOxiX7ghMBkleOVzXcFJ1So"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

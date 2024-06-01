@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/each_sender_background"
+            android:layout_margin="8dp">
+
+                <TextView
+                    android:id="@+id/textviewSender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=""
+                    android:paddingLeft="10dp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:textSize="20dp"/>
+
+        </LinearLayout>
+
+</RelativeLayout>
