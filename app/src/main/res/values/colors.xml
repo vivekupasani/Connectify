@@ -3,4 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ljesablack">#0C0B00</color>
+
+    <color name="blackDark">#1F1F1F</color>
+    <color name="blackLight">#252525</color>
+    <color name="skyBlue">#4FE9DF</color>
+    <color name="greenDark">#294745</color>
 </resources>

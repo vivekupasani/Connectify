@@ -22,6 +22,7 @@ class ChatAdapter(val context: Context, val messageList: ArrayList<Messages>) :
 
     class receiveViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
         val receiveMsg = itemView.findViewById<TextView>(R.id.textviewReceiver)
+        val receiveName = itemView.findViewById<TextView>(R.id.textviewSender)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
