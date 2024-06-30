@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/contact_chat_background"
     android:layout_margin="5dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/blackLight"
+    app:cardCornerRadius="20dp">
 
     <TextView
         android:id="@+id/clName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:text="name"
-        android:textColor="@android:color/black"
+        android:textAllCaps="true"
         android:textSize="30dp" />
 
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

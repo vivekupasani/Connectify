@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         firebase = FirebaseDatabase.getInstance().getReference()
 
         welcomeName = findViewById(R.id.welcomeusername)
-        welcomeName.text = FirebaseAuth.getInstance().currentUser?.email
+        welcomeName.text = FirebaseAuth.getInstance().currentUser?.email!!.substring(0,4)
 
         contactRecyclerView = findViewById(R.id.homeRecyclerView)
         contactRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-   
         firebase.child("Users").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 userList.clear()

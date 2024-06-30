@@ -1,7 +1,10 @@
+// ChattingActivity.kt
+
 package com.vivekupasani.connectify
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
@@ -15,6 +18,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.vivekupasani.connectify.adapters.ChatAdapter
 import com.vivekupasani.connectify.models.Messages
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @Suppress("DEPRECATION")
 class ChattingActivity : AppCompatActivity() {
@@ -28,7 +34,6 @@ class ChattingActivity : AppCompatActivity() {
     var senderRoom: String? = null
     var receiverRoom: String? = null
 
-    //github
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -86,18 +91,21 @@ class ChattingActivity : AppCompatActivity() {
             if (msgB.isEmpty()) {
                 Toast.makeText(this, "Blank Message box", Toast.LENGTH_SHORT).show()
             } else {
+                // Send message to Firebase Realtime Database
                 firebase.child("Chats").child(senderRoom!!).child("messages").push()
                     .setValue(Messages(msgB, senderId)).addOnSuccessListener {
                         firebase.child("Chats").child(receiverRoom!!).child("messages").push()
                             .setValue(Messages(msgB, senderId))
                     }
 
+                // Clear the message box
                 msgBox.text?.clear()
+
             }
         }
     }
 
-    //Actionbar menu
+    // Actionbar menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
@@ -105,7 +113,8 @@ class ChattingActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            android.R.id.home -> { // Handle back button click
+            android.R.id.home -> {
+                // Handle back button click
                 finish()
                 true
             }
